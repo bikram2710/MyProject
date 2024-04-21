@@ -4,11 +4,13 @@ import About from './components/About';
 import Navbar from './components/Navbar';
 import Textform from './components/textform';
 import Alert from './components/alert';
+
 import {  
   BrowserRouter,
   Route,
   Routes,  
 } from "react-router-dom";
+import Textytilis from './components/Textytilis';
 
 function App() {
   const [mode , setMode] = useState('light');  // wheter daek mode is enabled or not
@@ -29,13 +31,13 @@ function App() {
       setMode('dark');
       document.body.style.backgroundColor='#042743';
       showAlert("Dark mode has been enabled", "success")
-      document.title ="TextUtilis Dark mode";
+      // document.title ="TextUtilis Dark mode";
     }
     else{
       setMode('light');
       document.body.style.backgroundColor='white';
       showAlert("Light mode has been enabled", "success")
-      document.title ="TextUtilis Light mode";
+      // document.title ="TextUtilis Light mode";
     }  
   }
   return (
@@ -45,9 +47,11 @@ function App() {
     <Alert alert ={alert}/>
     <div className="container">
     <Routes>
-          <Route path="/about"  element={<About/>}>
+          <Route path="/about"  element={<About  mode={mode} />}>
           </Route>
-          <Route path="/" element={<Textform showAlert={showAlert} heading="Enter the text For Analyze" mode={mode} />}>
+          <Route path="/" element={<Textform showAlert={showAlert} heading="Try TextUtilis - Word Counter, Character Counter, Remove Extra Spaces" mode={mode} />}>
+          </Route>
+          <Route path="/TextUtilis" element={<Textytilis/>}>
           </Route>
     </Routes>      
     </div>
